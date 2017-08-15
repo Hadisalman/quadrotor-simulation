@@ -151,7 +151,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	// ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
-	// // ros::Rate loop_rate( 10 );	
+	ros::Rate loop_rate( 10 );	
 	// while(flag<5)
 	// {
 		
@@ -196,7 +196,7 @@ int main(int argc, char **argv) {
 	ROS_INFO("Pose client initialised.");
 	
 	// Initialise the TakeoffClient
-	TakeoffClient toc(nh, "/uav2/action/takeoff");
+	TakeoffClient toc(nh, "/uav1/action/takeoff");
 	toc.waitForServer();
 
 	// TakeoffClient toc2(nh, "/uav2/action/takeoff");
@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
 		
 		//Update subscribers and sleep
 		ros::spinOnce();
-		// loop_rate.sleep();
+		loop_rate.sleep();
 		
 		
 	}

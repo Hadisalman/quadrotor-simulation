@@ -105,13 +105,13 @@ void generate_waypoints() {
 	//Waypoint 1
 	
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
-	tmp_wp.position.x = 20.0;
+	tmp_wp.position.x = -20.0;
 	tmp_wp.position.y = 20.0;
 	tmp_wp.position.z = 20;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
 
 	//Waypoint 2
-	tmp_wp.position.x = 30.0;	//[1, 0, 5.0]
+	tmp_wp.position.x = -30.0;	//[1, 0, 5.0]
 	waypoints.push_back(tmp_wp);
 	
 	//Waypoint 3
@@ -119,12 +119,12 @@ void generate_waypoints() {
 	waypoints.push_back(tmp_wp);
 	
 	//Waypoint 4
-	tmp_wp.position.x = 1.0;	//[-1, -5, 50]
+	tmp_wp.position.x = -1.0;	//[-1, -5, 50]
 	tmp_wp.position.y = 1.0;
 	 waypoints.push_back(tmp_wp);
 	
 	//Waypoint 5
-	tmp_wp.position.x = -1.0;	//[0, 0, 50]
+	tmp_wp.position.x = -3.0;	//[0, 0, 50]
 	tmp_wp.position.y = 0.0;
 	waypoints.push_back(tmp_wp);
 }
@@ -137,8 +137,8 @@ int main(int argc, char **argv) {
 	//Waypoint 1
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
 	tmp_wp.position.x=0.0;
-	tmp_wp.position.y=1.0;
-	tmp_wp.position.z = 21;	//First waypoint is at [0, 0, 5]
+	tmp_wp.position.y=0.0;
+	tmp_wp.position.z = 22;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
 
 	// tmp_wp2.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
@@ -151,7 +151,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	// ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
-	// // ros::Rate loop_rate( 10 );	
+	ros::Rate loop_rate( 10 );	
 	// while(flag<5)
 	// {
 		
@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
 		
 		//Update subscribers and sleep
 		ros::spinOnce();
-		// loop_rate.sleep();
+		loop_rate.sleep();
 		
 		
 	}

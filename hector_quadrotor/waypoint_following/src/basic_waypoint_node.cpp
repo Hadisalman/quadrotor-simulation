@@ -83,10 +83,10 @@ void chatterCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
    geometry_msgs::Pose tmp_wp,tmp_wp2;
   	flag=flag+1;
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
-	tmp_wp.position.x = msg->data[0]/4;
-	tmp_wp.position.y = msg->data[1]/4;
+	tmp_wp.position.x = msg->data[2]/4;
+	tmp_wp.position.y = msg->data[3]/4;
 	// cout<<tmp_wp.position.y<<endl;
-	tmp_wp.position.z = 20;	//First waypoint is at [0, 0, 5]
+	tmp_wp.position.z = 21;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
 
 	// tmp_wp2.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
@@ -106,7 +106,7 @@ void generate_waypoints() {
 	
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
 	tmp_wp.position.x = 20.0;
-	tmp_wp.position.y = 20.0;
+	tmp_wp.position.y = -20.0;
 	tmp_wp.position.z = 20;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
 
@@ -115,17 +115,17 @@ void generate_waypoints() {
 	waypoints.push_back(tmp_wp);
 	
 	//Waypoint 3
-	tmp_wp.position.y = 1.0;	//[1, 1.0, 5.0]
+	tmp_wp.position.y = 5.0;	//[1, 1.0, 5.0]
 	waypoints.push_back(tmp_wp);
 	
 	//Waypoint 4
-	tmp_wp.position.x = 1.0;	//[-1, -5, 50]
+	tmp_wp.position.x =2.0;	//[-1, -5, 50]
 	tmp_wp.position.y = 1.0;
 	 waypoints.push_back(tmp_wp);
 	
 	//Waypoint 5
-	tmp_wp.position.x = -1.0;	//[0, 0, 50]
-	tmp_wp.position.y = 0.0;
+	tmp_wp.position.x = -2.0;	//[0, 0, 50]
+	tmp_wp.position.y = 1.0;
 	waypoints.push_back(tmp_wp);
 }
 
@@ -138,7 +138,7 @@ int main(int argc, char **argv) {
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
 	tmp_wp.position.x=0.0;
 	tmp_wp.position.y=-1.0;
-	tmp_wp.position.z = 20;	//First waypoint is at [0, 0, 5]
+	tmp_wp.position.z = 21;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
 
 	// tmp_wp2.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
@@ -147,11 +147,11 @@ int main(int argc, char **argv) {
 	// tmp_wp2.position.z = 22;	//First waypoint is at [0, 0, 5]
 	// waypoints2.push_back(tmp_wp2);
 	//Setup node (must be called before creating variables)
-	ros::init( argc, argv, "basic_waypoint" );
+	ros::init( argc, argv, "basic_waypoint2" );
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	// ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
-	// // ros::Rate loop_rate( 10 );	
+	ros::Rate loop_rate( 10 );	
 	// while(flag<5)
 	// {
 		
@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
 		
 		//Update subscribers and sleep
 		ros::spinOnce();
-		// loop_rate.sleep();
+		loop_rate.sleep();
 		
 		
 	}
@@ -266,3 +266,4 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
+
