@@ -32,7 +32,7 @@
 
  <node name="basic_waypoint_node3" pkg="waypoint_following" type="basic_waypoint_node3" output="screen" />
  
-  <!-- <node name="search_coverage_node" pkg="search_coverage" type="search_coverage_node" output="screen" /> -->
+  <node name="search_coverage_node" pkg="search_coverage" type="search_coverage_node" output="screen" />
 
 
   <!--<include file="$(find hector_quadrotor_teleop)/launch/xbox_controller.launch" >

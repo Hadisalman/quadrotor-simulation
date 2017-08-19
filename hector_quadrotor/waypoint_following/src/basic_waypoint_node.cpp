@@ -83,8 +83,8 @@ void chatterCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
    geometry_msgs::Pose tmp_wp,tmp_wp2;
   	flag=flag+1;
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
-	tmp_wp.position.x = msg->data[2]/4;
-	tmp_wp.position.y = msg->data[3]/4;
+	tmp_wp.position.x = msg->data[0]/4;
+	tmp_wp.position.y = msg->data[1]/4;
 	// cout<<tmp_wp.position.y<<endl;
 	tmp_wp.position.z = 21;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
@@ -150,14 +150,14 @@ int main(int argc, char **argv) {
 	ros::init( argc, argv, "basic_waypoint2" );
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
-	// ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
+	ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
 	ros::Rate loop_rate( 10 );	
-	// while(flag<5)
-	// {
+	while(flag<5)
+	{
 		
-	// ros::spinOnce();
-	// // loop_rate.sleep();
-	// }
+	ros::spinOnce();
+	// loop_rate.sleep();
+	}
 
 	// Local variables
 	geometry_msgs::PoseStamped HBII0;		// Initial pose in inertial coords. Set to zero. 	
@@ -173,7 +173,7 @@ int main(int argc, char **argv) {
 	pos_sub = nh.subscribe( "/uav1/ground_truth_to_tf/pose", 1000, position_cb );
 	// pos_sub2 = nh2.subscribe( "/uav2/ground_truth_to_tf/pose", 1000, position_cb2 );
 	// Generate the waypoints
-	generate_waypoints();
+	// generate_waypoints();
 	
 			//First waypoint is at [0, 0, 5]
 	
