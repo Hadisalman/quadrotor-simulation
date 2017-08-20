@@ -83,8 +83,8 @@ void chatterCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
    geometry_msgs::Pose tmp_wp,tmp_wp2;
   	flag=flag+1;
 	tmp_wp.orientation.w = 1.0;	//Intitalize the quaternion (relying on x, y, and z to default to 0
-	tmp_wp.position.x = msg->data[2]/4;
-	tmp_wp.position.y = msg->data[3]/4;
+	tmp_wp.position.x = msg->data[2];
+	tmp_wp.position.y = msg->data[3];
 	// cout<<tmp_wp.position.y<<endl;
 	tmp_wp.position.z = 22;	//First waypoint is at [0, 0, 5]
 	waypoints.push_back(tmp_wp);
@@ -150,9 +150,9 @@ int main(int argc, char **argv) {
 	ros::init( argc, argv, "basic_waypoint2" );
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
-	ros::Subscriber sub = n.subscribe("/robot_traj", 5, chatterCallback);
+	ros::Subscriber sub = n.subscribe("/robot_traj", 1000, chatterCallback);
 	ros::Rate loop_rate( 10 );	
-	while(flag<5)
+	while(flag<1000)
 	{
 		
 	ros::spinOnce();

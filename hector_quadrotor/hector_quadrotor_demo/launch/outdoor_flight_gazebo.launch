@@ -3,7 +3,7 @@
 <launch>
  	<arg name="gui" default="true"/>
   <!-- Start Gazebo with wg world running in (max) realtime -->
-  <include file="$(find hector_gazebo_worlds)/launch/rolling_landscape_120m2.launch">
+  <include file="$(find hector_gazebo_worlds)/launch/Heightmap.launch">
   	
   </include>	 
 
