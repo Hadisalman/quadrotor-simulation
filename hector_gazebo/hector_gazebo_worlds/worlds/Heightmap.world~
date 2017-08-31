@@ -21,7 +21,10 @@
           <contact_surface_layer>0.001</contact_surface_layer>
         </constraints>
       </ode>
-      <max_step_size>0.001</max_step_size>
+      <max_step_size>0.005</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>0</real_time_update_rate>
+      
     </physics>
     <light type="directional" name="directional_light_1">
       <pose>0 20 20 0.1 0.1 0</pose>
@@ -33,53 +36,9 @@
       <direction>0.1 0.1 -1</direction>
       <cast_shadows>false</cast_shadows>
     </light>
-    <model name="3_mountains">
-      <static>true</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <heightmap>
-              <uri>model://3_mountains/materials/textures/use.png</uri>
-              <size>300 300 20</size>
-              <pos>150 150 0</pos>
-            </heightmap>
-          </geometry>
-        </collision>
-        <visual name="visual_abcedf">
-          <geometry>
-            <heightmap>
-              <use_terrain_paging>false</use_terrain_paging>
-              <texture>
-                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>1</size>
-              </texture>
-              <texture>
-                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>1</size>
-              </texture>
-              <texture>
-                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>1</size>
-              </texture>
-              <blend>
-                <min_height>2</min_height>
-                <fade_dist>5</fade_dist>
-              </blend>
-              <blend>
-                <min_height>4</min_height>
-                <fade_dist>5</fade_dist>
-              </blend>
-             <uri>file://media/materials/textures/use.png</uri>
-              <size>300 300 20</size>
-              <pos>150 150 0</pos>
-            </heightmap>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-  </wold>
+    <include>
+      <uri>model://3_mountains</uri>
+    </include>
+  </world>
 </sdf>
 

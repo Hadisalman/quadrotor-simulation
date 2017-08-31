@@ -151,7 +151,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	ros::Subscriber sub = n.subscribe("/robot_traj", 1000, chatterCallback);
-	ros::Rate loop_rate( 10 );	
+	ros::Rate loop_rate( 1000 );	
 	while(flag<1000)
 	{
 		

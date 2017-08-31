@@ -151,7 +151,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	ros::Subscriber sub = n.subscribe("/robot_traj", 1000, chatterCallback);
-	ros::Rate loop_rate( 10 );	
+	ros::Rate loop_rate( 1000 );	
 	while(flag<1000)
 	{
 		
@@ -173,7 +173,7 @@ int main(int argc, char **argv) {
 	pos_sub = nh.subscribe( "/uav3/ground_truth_to_tf/pose", 1000, position_cb );
 	// pos_sub2 = nh2.subscribe( "/uav2/ground_truth_to_tf/pose", 1000, position_cb2 );
 	// Generate the waypoints
-	generate_waypoints();
+	// generate_waypoints();
 	
 			//First waypoint is at [0, 0, 5]
 	
