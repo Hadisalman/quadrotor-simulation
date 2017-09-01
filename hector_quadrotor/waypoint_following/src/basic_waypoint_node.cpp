@@ -21,7 +21,7 @@ geometry_msgs::PoseStamped current_goal,current_goal2;
 geometry_msgs::Pose tmp_wp;
 std::vector<geometry_msgs::Pose> waypoints,waypoints2;
 int wp_counter = 0,wp_counter2=0;
-double wp_radius = 1;
+double wp_radius = 2.5;
 bool quit_loop = false;
 std_msgs::Float32MultiArray rob_pose;
 int flag=0;
@@ -151,8 +151,8 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
 	ros::Subscriber sub = n.subscribe("/robot_traj", 1000, chatterCallback);
-	ros::Rate loop_rate( 1000 );	
-	while(flag<1000)
+	ros::Rate loop_rate( 100 );	
+	while(flag<100)
 	{
 		
 	ros::spinOnce();
