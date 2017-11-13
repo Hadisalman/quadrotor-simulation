@@ -150,8 +150,9 @@ int main(int argc, char **argv) {
 	ros::init( argc, argv, "basic_waypoint2" );
 	ros::NodeHandle nh,nh2;
 	ros::NodeHandle n;
-	ros::Subscriber sub = n.subscribe("/robot_traj", 1000, chatterCallback);
-	ros::Rate loop_rate( 100 );	
+	ros::Subscriber sub = n.subscribe("/robot_traj", 10000, chatterCallback);
+	// ros::ServiceClient client = n.serviceClient("send_Traj");
+	ros::Rate loop_rate(100);	
 	while(flag<100)
 	{
 		
